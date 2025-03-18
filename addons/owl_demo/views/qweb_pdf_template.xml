@@ -29,7 +29,7 @@
             <field name="report_type">qweb-pdf</field>
             <field name="report_name">owl_demo.report_qweb_pdf_template</field><!--(主模块的文件名)模块名称+ (Qweb模板)看板视图id   -->
             <field name="report_file">owl_demo.report_qweb_pdf_template</field><!--(主模块的文件名)模块名称+ (Qweb模板)看板视图id   -->
-            <field name="print_report_name">(object.name)</field>
+            <field name="print_report_name">(object.name1)</field>
             <field name="binding_model_id"
                    ref="owl_demo.model_owl_demo"/> <!-- (主模块的文件名)模块名称 + csv里的模型id (model_id)   用于指定打印模板位置放置于那个模块里，如果不写，不显示 -->
             <field name="binding_type">report</field><!--  固定写法  -->
@@ -43,7 +43,7 @@
             <field name="report_type">qweb-pdf</field>
             <field name="report_name">owl_demo.report_qweb_pdf_template</field><!--(主模块的文件名)模块名称+ (Qweb模板)看板视图id   -->
             <field name="report_file">owl_demo.report_qweb_pdf_template</field><!--(主模块的文件名)模块名称+ (Qweb模板)看板视图id   -->
-            <field name="print_report_name">(object.name)</field>
+            <field name="print_report_name">(object.name1)</field>
             <field name="binding_model_id"
                    ref="owl_demo.model_owl_demo"/> <!-- (主模块的文件名)模块名称 + csv里的模型id (model_id)   用于指定打印模板位置放置于那个模块里，如果不写，不显示 -->
             <field name="binding_type">report</field><!--  固定写法  -->
