@@ -1,0 +1,26 @@
+<template>
+    <!--注意：qweb.render 的 qweb 后面不需要加  owl="1" -->
+    <t t-name="owl_demo.qweb_dialog_template">
+        <style>
+            /* Add your CSS here */
+        </style>
+        <div>
+            <t t-esc="datas"/>
+        </div>
+    </t>
+
+
+    
+
+    <!--注意：qweb.render 的 qweb 后面不需要加  owl="1" -->
+    <t t-name="owl_demo.qweb_dialog_template11">
+        <style>
+            /* Add your CSS here */
+        </style>
+        <div>
+            <t t-esc="datas"/>
+            <br/>
+            <button id="test_id" class="btn btn-success">测试点击事件</button>
+        </div>
+    </t>
+</template>

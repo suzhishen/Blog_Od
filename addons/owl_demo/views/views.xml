@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Form -->
+        <record id="owl_demo_view_form" model="ir.ui.view"> <!-- -->
+            <field name="name">Owl Demo Form</field>        <!-- -->
+            <field name="model">owl.demo</field>            <!-- _name -->
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name1"/>
+                                <field name="name2"/>
+                            </group>
+                            <group>
+                                <field name="name3"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page string="测试 notebook_widget" name="_test_notebook_widget_tree">
+                                <widget name="test_notebook_widget_tree"/>
+                            </page>
+                        </notebook>
+                        <notebook>
+                            <page string="测试 notebook_ids" name="notebook_ids">
+                                <field name="notebook_ids" context="{'dialog_size':'extra-modal-max-90'}">
+                                    <tree>
+                                        <field name="name"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids"/>
+                        <field name="activity_ids"/>
+                        <field name="message_ids" options="{'post_refresh': 'recipients'}"/>
+                    </div>
+                </form>
+            </field>
+        </record>
+
+        <!-- Tree -->
+        <record id="owl_demo_view_tree" model="ir.ui.view"> <!-- -->
+            <field name="name">Owl Demo List</field>        <!-- -->
+            <field name="model">owl.demo</field>            <!-- _name -->
+            <field name="arch" type="xml">
+                <tree js_class="owl_demo_dashboard_list">   <!-- js_class -->
+                    <field name="name1"/>
+                    <field name="name2"/>
+                    <field name="name3"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Search -->
+        <record id="owl_demo_view_search" model="ir.ui.view">   <!-- -->
+            <field name="name">Owl Demo Search</field>          <!-- -->
+            <field name="model">owl.demo</field>                <!-- _name -->
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name1"/>
+                    <field name="name2"/>
+                    <field name="name3"/>
+                    <separator/>
+                    <filter name="name1" string="name1 = 测试" domain="[('name1','=','测试')]"/>
+                    <filter name="name2" string="name2 = 测试2" domain="[('name2','=', '测试2')]"/>
+                    <separator/>
+                    <group expand='0' string='Group by...'>
+                        <filter string="按照 name1 字段进行分组" name="自定义group_name1" context="{'group_by': 'name1'}"/>
+                        <filter string="按照 name2 字段进行分组" name="自定义group_name2" context="{'group_by': 'name2'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="owl_demo_model_action" model="ir.actions.act_window">   <!-- -->
+            <field name="name">Owl Demo</field>                             <!-- -->
+            <field name="res_model">owl.demo</field>                        <!-- _name -->
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+
+        <!-- ↓↓↓↓↓↓↓↓↓↓↓ -->
+        <!--            Button 按钮              -->
+        <!-- Tree -->
+        <record id="owl_demo_button_view_tree" model="ir.ui.view"> <!-- -->
+            <field name="name">Owl Demo List</field>        <!-- -->
+            <field name="model">owl.demo</field>            <!-- _name -->
+            <field name="arch" type="xml">
+                <tree js_class="owl_demo_test_list">   <!-- js_class -->
+                    <field name="name1"/>
+                    <field name="name2"/>
+                    <field name="name3"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="owl_demo_button_model_action" model="ir.actions.act_window">   <!-- -->
+            <field name="name">Owl Demo</field>                             <!-- -->
+            <field name="res_model">owl.demo</field>                        <!-- _name -->
+            <field name="view_mode">tree,form</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('owl_demo_button_view_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('owl_demo_view_form')})]"/>
+        </record>
+
+
+        <!-- ↓↓↓↓↓↓↓↓↓↓↓ -->
+        <!--            Button 按钮重写             -->
+        <!-- Tree -->
+        <record id="owl_demo_button_rewrite_view_tree" model="ir.ui.view"> <!-- -->
+            <field name="name">Owl Demo List</field>        <!-- -->
+            <field name="model">owl.demo</field>            <!-- _name -->
+            <field name="arch" type="xml">
+                <tree js_class="owl_demo_rewrite_dashboard_list">   <!-- js_class -->
+                    <field name="name1"/>
+                    <field name="name2"/>
+                    <field name="name3"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="owl_demo_button_rewrite_model_action" model="ir.actions.act_window">   <!-- -->
+            <field name="name">Owl Demo</field>                             <!-- -->
+            <field name="res_model">owl.demo</field>                        <!-- _name -->
+            <field name="view_mode">tree,form</field>
+            <field name="view_ids" eval="[(5, 0, 0),
+                (0, 0, {'view_mode': 'tree', 'view_id': ref('owl_demo_button_rewrite_view_tree')}),
+                (0, 0, {'view_mode': 'form', 'view_id': ref('owl_demo_view_form')})]"/>
+        </record>
+
+        <!-- Menu -->
+<!--        <menuitem name="Owl Demo 主菜单" id="owl_demo_menu_root"/>     &lt;!&ndash; &ndash;&gt;-->
+<!--        <menuitem name="Owl Demo 子菜单" id="owl_demo_menu" parent="owl_demo_menu_root" action="owl_demo_model_action" sequence="0"/>        &lt;!&ndash; 改 parent 选主菜单&ndash;&gt;-->
+<!--        <menuitem name="Owl Demo 子菜单列表" id="owl_demo_menu_list" parent="owl_demo_menu" action="owl_demo_model_action" sequence="0"/>     &lt;!&ndash; 改 parent 选子菜单 &ndash;&gt;-->
+
+    </data>
+</odoo>

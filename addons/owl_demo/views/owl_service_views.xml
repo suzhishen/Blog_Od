@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<odoo>
+    <data>
+        <record id="action_owl_service_orm_service_client" model="ir.actions.client">
+            <field name="name">Owl Service</field>
+            <field name="tag">owl_OrmService</field>
+            <field name="target">main</field>
+        </record>
+
+
+        <record id="action_owl_service_orm_service_client_2" model="ir.actions.client">
+            <field name="name">Owl Service_2</field>
+            <field name="tag">owl_OrmService_2</field>
+            <field name="target">main</field>
+        </record>
+
+<!--        <menuitem name="Owl Demo 子菜单" id="owl_demo_menu" parent="owl_demo_menu_root" action="owl_demo_model_action" sequence="10"/>        &lt;!&ndash; 改 parent 选主菜单&ndash;&gt;-->
+    </data>
+</odoo>

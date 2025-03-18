@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 在动作旁边添加打印按钮 -->
+<odoo>
+    <data>
+        <!--定义编写纸张模板-->
+        <record id="test_owl_demo_qweb_pdf_print" model="report.paperformat">
+            <field name="name">定义编写纸张模板--打印xxx</field>
+            <field name="default" eval="True"/>
+            <!--format 打印的类型有很多种，这里使用自定义打印custom-->
+            <field name="format">custom</field>
+            <field name="page_height">80</field>
+            <field name="page_width">40</field>
+            <!--Landscape为横向打印-->
+            <field name="orientation">Portrait</field>
+            <!--内容的外边距，就是内容距离顶部的距离，如果有表头这个高度需要大于表头的高度。-->
+            <field name="margin_top">2</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <!--有表头记得设置为True并设置header_spacing，不然打印内容会在表头下方显示不出来-->
+            <field name="disable_shrinking" eval="False"/>
+            <field name="dpi">96</field>
+        </record>
+
+        <!--定义打印动作视图-->
+        <record id="test_actions_report_qweb_pdf1" model="ir.actions.report">
+            <field name="name">测试qweb-pdf打印1</field>
+            <field name="model">owl.demo</field>    <!--(主模块的文件名)模块名称-->
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">owl_demo.report_qweb_pdf_template</field><!--(主模块的文件名)模块名称+ (Qweb模板)看板视图id   -->
+            <field name="report_file">owl_demo.report_qweb_pdf_template</field><!--(主模块的文件名)模块名称+ (Qweb模板)看板视图id   -->
+            <field name="print_report_name">(object.name)</field>
+            <field name="binding_model_id"
+                   ref="owl_demo.model_owl_demo"/> <!-- (主模块的文件名)模块名称 + csv里的模型id (model_id)   用于指定打印模板位置放置于那个模块里，如果不写，不显示 -->
+            <field name="binding_type">report</field><!--  固定写法  -->
+            <field name="paperformat_id" ref="owl_demo.test_owl_demo_qweb_pdf_print"/>
+        </record>
+
+        <!--定义打印动作视图-->
+        <record id="test_actions_report_qweb_pdf2" model="ir.actions.report">
+            <field name="name">测试qweb-pdf打印2</field>
+            <field name="model">owl.demo</field>    <!--(主模块的文件名)模块名称-->
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">owl_demo.report_qweb_pdf_template</field><!--(主模块的文件名)模块名称+ (Qweb模板)看板视图id   -->
+            <field name="report_file">owl_demo.report_qweb_pdf_template</field><!--(主模块的文件名)模块名称+ (Qweb模板)看板视图id   -->
+            <field name="print_report_name">(object.name)</field>
+            <field name="binding_model_id"
+                   ref="owl_demo.model_owl_demo"/> <!-- (主模块的文件名)模块名称 + csv里的模型id (model_id)   用于指定打印模板位置放置于那个模块里，如果不写，不显示 -->
+            <field name="binding_type">report</field><!--  固定写法  -->
+            <field name="paperformat_id" ref="owl_demo.test_owl_demo_qweb_pdf_print"/>
+        </record>
+
+        <template id="report_qweb_pdf_template">
+            <!-- 调用了 Odoo 中内置的名为 web.html_container 的布局模板-->
+            <t t-call="web.html_container">
+                <div stye="font-family: Microsoft YaHei;">
+                    这是一个qweb-pdf模板
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>

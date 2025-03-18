@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates>
+    <t t-name="Owl.DemoSystray" owl="1">
+        <div>
+            <div class="dropdown-toggle o-no-caret" t-on-click="switching_message_position">
+                <t t-if="MessagePosition == 'auto'">
+                    <!-- 自动 -->
+                    <i class="fa fa-align-right" role="img" title="消息自动显示"/>
+                </t>
+                <t t-if="MessagePosition == 'bottom'">
+                    <!-- 下 -->
+                    <i class="fa fa-align-center" role="img" title="消息在下方显示"/>
+                </t>
+                <!-- 右 -->
+<!--                <i class="fa fa-arrows-h" role="img" aria-label="Unfold" title="Unfold"/>-->
+            </div>
+        </div>
+    </t>
+</templates>

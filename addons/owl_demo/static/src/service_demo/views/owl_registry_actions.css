@@ -1,0 +1,16 @@
+#test_table_div .layui-table-header table {
+    background-color: #b4d7fc;
+}
+
+.layui-laypage-limits select {
+    line-height: normal;
+}
+
+.layui-table-body tr:nth-child(even) {
+    background-color: #fafafa; /* 修改偶数行背景色 */
+}
+
+/* 重写覆盖 layui-table-hover 样式 */
+.layui-table-hover {
+    background-color: #f0f0f0 !important;  /* 鼠标放上表行背景色 */
+}

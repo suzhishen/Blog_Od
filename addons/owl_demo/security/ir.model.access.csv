@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_owl_demo,access_owl_demo,model_owl_demo,,1,1,1,1
+access_owl_demo_notebook_widget,access_owl_demo_notebook_widget,model_owl_demo_notebook_widget,,1,1,1,1

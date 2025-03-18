@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-name="Owl.OwlDemoService2" owl="1">
+        <!--        <link rel="stylesheet" type="text/css" href="/owl_demo/static/src/service_demo/views/owl_registry_actions.css"/>-->
+        <script type="text/javascript" src="/owl_demo/static/src/layui/layui.js"/>
+        <form class="row g-3" style="overflow: auto; height: inherit; scrollbar-width: none;">
+            <div class="col-12">
+                <p t-ref="hello">Hello work1</p>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">name1</span>
+                    <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                           aria-describedby="basic-addon1" t-ref="xxx_name"/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <button type="button" class="btn btn-success" t-on-click="orm_fun">创建记录，orm 测试，看 log</button>
+            </div>
+            <div class="col-md-6">
+                <div class="layui-form layui-row layui-col-space16" id='name1ID'>
+                    <div class="layui-col-md12">
+                        <div class="layui-input-group layui-col-md12" t-on-click="click_select">
+                            <div class="layui-input-prefix layui-input-split">测试字段1</div>
+                            <select>
+                                <option value="" id="option1">请选择</option>
+                                <t t-foreach="state.selects" t-as="select" t-key="select.id">
+                                    <option t-att-value="select.id">
+                                        <t t-esc="select.name1"/>
+                                    </option>
+                                </t>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                    <button type="button" class="btn btn-danger" t-on-click="orm_left_fun">搜索</button>
+                    <button id="monidianji" type="button" class="btn btn-warning" t-on-click="orm_middle_fun">测试图表
+                    </button>
+                    <button type="button" class="btn btn-success" t-on-click="orm_right_fun">点击弹窗</button>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <form class="layui-form layui-row layui-col-space16">
+                    <div class="layui-col-md12">
+                        <div class="layui-input-group layui-col-md12">
+                            <div class="layui-input-prefix layui-input-split">测试字段1</div>
+                            <input id="input_search_data" class="layui-input" type="text" name="getdata"
+                                   t-on-click="click_input_select"
+                                   placeholder="该组件经过改进适合用于接口请求搜索数据"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <div id="main" t-ref="mainRef" style="width: 400px;height:200px;"/>
+            </div>
+
+            <div class="col-md-6">
+                <div class="layui-btn-container">
+                    <button type="button" class="layui-btn" t-on-click="default_button_fun">默认按钮</button>
+                    <button type="button" class="layui-btn layui-bg-blue">蓝色按钮</button>
+                    <button type="button" class="layui-btn layui-bg-orange">橙色按钮</button>
+                    <button type="button" class="layui-btn layui-bg-red">红色按钮</button>
+                    <button type="button" class="layui-btn layui-bg-purple">紫色按钮</button>
+                    <button type="button" class="layui-btn layui-btn-disabled">禁用按钮</button>
+                </div>
+
+                <div class="layui-btn-container">
+                    <button class="layui-btn layui-btn-primary layui-border-green">主色按钮</button>
+                    <button class="layui-btn layui-btn-primary layui-border-blue">蓝色按钮</button>
+                    <button class="layui-btn layui-btn-primary layui-border-orange">橙色按钮</button>
+                    <button class="layui-btn layui-btn-primary layui-border-red">红色按钮</button>
+                    <button class="layui-btn layui-btn-primary layui-border-purple">紫色按钮</button>
+                    <button class="layui-btn layui-btn-primary layui-border">普通按钮</button>
+                </div>
+            </div>
+
+            <div class="col-md-6" id="test_table_div">
+                <table class="layui-table" id="test_table"
+                       lay-data="{url:'/get_table_data', cellMinWidth: 80, page: true, limits: [3, 5, 10, 20, 30, 40, 50], limit: 3}">
+                    <thead>
+                        <tr>
+                            <th lay-data="{field:'id', fixed:'left', width:80}" rowspan="1">ID</th>
+                            <th lay-data="{field:'name1'}" rowspan="2">name1</th>
+                            <th lay-data="{field:'name2'}" rowspan="3">name2</th>
+                            <th lay-data="{field:'name3'}" rowspan="3">name3</th>
+                            <th lay-data="{fixed: 'right', width: 160, align: 'center', toolbar: '#templet-demo-theads-tool'}"
+                                rowspan="2">操作
+                            </th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="col-md-12">
+                <table class="layui-table"
+                       lay-data="{url:'/get_test_table_data', cellMinWidth: 80, page: true}"
+                       id="ID-table-demo-theads-2">
+                    <thead>
+                        <tr>
+                            <th lay-data="{field:'username', fixed:'left', width:80}" rowspan="3">联系人</th>
+                            <th lay-data="{field:'amount'}" rowspan="3">数量</th>
+                            <th lay-data="{align:'center'}" colspan="5">地址1</th>
+                            <th lay-data="{align:'center'}" colspan="2">地址2</th>
+                            <th lay-data="{fixed: 'right', width: 160, align: 'center', toolbar: '#templet-demo-theads-tool'}"
+                                rowspan="3">操作
+                            </th>
+                        </tr>
+                        <tr>
+                            <th lay-data="{field:'province'}" rowspan="2">省</th>
+                            <th lay-data="{field:'city'}" rowspan="2">市</th>
+                            <th lay-data="{align:'center'}" colspan="3">详细</th>
+                            <th lay-data="{field:'province'}" rowspan="2">省</th>
+                            <th lay-data="{field:'city'}" rowspan="2">市</th>
+                        </tr>
+                        <tr>
+                            <th lay-data="{field:'street'}" rowspan="2">街道</th>
+                            <th lay-data="{field:'address'}">小区</th>
+                            <th lay-data="{field:'house'}">单元</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </form>
+    </t>
+</templates>

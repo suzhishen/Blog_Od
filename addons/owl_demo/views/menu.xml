@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Menu -->
+        <menuitem name="Owl Demo 主菜单" id="owl_demo_menu_root"/>     <!-- -->
+        <menuitem name="Owl Demo 子菜单" id="owl_demo_menu" parent="owl_demo_menu_root" sequence="0"/>        <!-- 改 parent 选主菜单-->
+        <menuitem name="Owl Demo 子菜单列表" id="owl_demo_menu_list" parent="owl_demo_menu" action="owl_demo_model_action" sequence="0"/>     <!-- 改 parent 选子菜单 -->
+        <menuitem name="Owl Demo tree测试按钮" id="owl_demo_button_menu_list" parent="owl_demo_menu" action="owl_demo_button_model_action" sequence="10"/>     <!-- 改 parent 选子菜单 -->
+        <menuitem name="Owl Demo tree测试按钮重写" id="owl_demo_rewrite_menu_list" parent="owl_demo_menu" action="owl_demo_button_rewrite_model_action" sequence="20"/>     <!-- 改 parent 选子菜单 -->
+
+        <menuitem name="Owl Service Demo 子菜单" id="owl_service_demo_menu" parent="owl_demo_menu_root" sequence="10"/>        <!-- 改 parent 选主菜单-->
+        <menuitem name="Owl Service Demo 子菜单列表" id="owl_service_demo_menu_list" parent="owl_service_demo_menu" action="action_owl_service_orm_service_client" sequence="0"/>     <!-- 改 parent 选子菜单 -->
+        <menuitem name="Owl Service Demo 子菜单列表2" id="owl_service_demo_menu_list_2" parent="owl_service_demo_menu" action="action_owl_service_orm_service_client_2" sequence="10"/>     <!-- 改 parent 选子菜单 -->
+    </data>
+</odoo>

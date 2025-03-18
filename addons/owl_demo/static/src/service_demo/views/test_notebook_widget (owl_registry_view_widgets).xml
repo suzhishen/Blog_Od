@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="owl_demo.test_notebook_widget_tree" owl="1">
+        <script type="text/javascript" src="/owl_demo/static/src/layui/layui.js"/>
+        <div>
+            <button type="button" class="btn btn-warning" t-on-click="orm_right_dialog_fun">点击弹窗dialog</button>
+        </div>
+        <div>
+            <table class="layui-table" id="test_table" lay-data="{url:'/get_table_data', cellMinWidth: 80, page: true, limits: [3, 5, 10, 20, 30, 40, 50], limit: 3}">
+                <thead>
+                    <tr>
+                        <th lay-data="{field:'id', fixed:'left', width:80}" rowspan="1">ID</th>
+                        <th lay-data="{field:'name1'}" rowspan="2">name1</th>
+                        <th lay-data="{field:'name2'}" rowspan="3">name2</th>
+                        <th lay-data="{field:'name3'}" rowspan="3">name3</th>
+                        <th lay-data="{fixed: 'right', width: 160, align: 'center', toolbar: '#templet-demo-theads-tool'}"
+                            rowspan="2">操作
+                        </th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <div id="main" t-ref="mainRef" style="width: 500px;height:200px;"/>
+        </div>
+    </t>
+</templates>

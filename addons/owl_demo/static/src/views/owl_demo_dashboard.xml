@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+    <t t-name="owl_demo.OwlDemoDashBoard" owl="1">
+        <form class="row g-3">
+            <div class="col-12">
+                <p t-ref="hello">Hello work1</p>
+            </div>
+            <div class="col-md-6">
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">name1</span>
+                    <input type="text" class="form-control" placeholder="Username" aria-label="Username"
+                           aria-describedby="basic-addon1" t-ref="xxx_name"/>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <button type="button" class="btn btn-success" t-on-click="orm_fun">创建记录，orm 测试，看 log</button>
+            </div>
+            <div class="col-md-6">
+                <div class="layui-form layui-row layui-col-space16" id='name1ID'>
+                    <div class="layui-col-md12">
+                        <div class="layui-input-group layui-col-md12" t-on-click="click_select">
+                            <div class="layui-input-prefix layui-input-split">测试字段1</div>
+                            <select>
+                                <option value="" id="option1">请选择</option>
+                                <t t-foreach="state.selects" t-as="select" t-key="select.id">
+                                    <option t-att-value="select.id">
+                                        <t t-esc="select.name1"/>
+                                    </option>
+                                </t>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                    <button type="button" class="btn btn-danger" t-on-click="orm_left_fun">搜索</button>
+                    <button id="monidianji" type="button" class="btn btn-warning" t-on-click="orm_middle_fun">测试图表
+                    </button>
+                    <button type="button" class="btn btn-success" t-on-click="orm_right_doAction_fun">点击弹窗doAction</button>
+                    <button type="button" class="btn btn-warning" t-on-click="orm_right_dialog_fun">点击弹窗dialog</button>
+                    <button type="button" class="btn btn-success" t-on-click="orm_right_Dialog_fun2">点击弹窗Dialog2</button>
+                    <button type="button" class="btn btn-danger" t-on-click="orm_right_Dialog_fun11">点击弹窗Dialog11,进方法</button>
+                    <button type="button" class="btn btn-warning" t-on-click="orm_right_Dialog_fun3">点击弹窗Dialog3</button>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <form class="layui-form layui-row layui-col-space16">
+                    <div class="layui-col-md12">
+                        <div class="layui-input-group layui-col-md12">
+                            <div class="layui-input-prefix layui-input-split">测试字段1</div>
+                            <input id="input_search_data" class="layui-input" type="text" name="getdata"
+                                   t-on-click="click_input_select"
+                                   placeholder="该组件经过改进适合用于接口请求搜索数据"/>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6">
+                <div id="main" t-ref="mainRef" style="width: 500px;height:200px;"/>
+            </div>
+
+            <div class="col-md-6">
+                <div class="layui-btn-container">
+                    <button type="button" class="layui-btn" t-on-click="default_button_fun">默认按钮</button>
+                    <button type="button" class="layui-btn layui-bg-blue">蓝色按钮</button>
+                    <button type="button" class="layui-btn layui-bg-orange">橙色按钮</button>
+                    <button type="button" class="layui-btn layui-bg-red">红色按钮</button>
+                    <button type="button" class="layui-btn layui-bg-purple">紫色按钮</button>
+                    <button type="button" class="layui-btn layui-btn-disabled">禁用按钮</button>
+                </div>
+
+                <div class="layui-btn-container">
+                    <button class="layui-btn layui-btn-primary layui-border-green">主色按钮</button>
+                    <button class="layui-btn layui-btn-primary layui-border-blue">蓝色按钮</button>
+                    <button class="layui-btn layui-btn-primary layui-border-orange">橙色按钮</button>
+                    <button class="layui-btn layui-btn-primary layui-border-red">红色按钮</button>
+                    <button class="layui-btn layui-btn-primary layui-border-purple">紫色按钮</button>
+                    <button class="layui-btn layui-btn-primary layui-border">普通按钮</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <!--多选下拉框-->
+                <div>xm-select-多选+搜索</div>
+                <div id="selectDemo" class="xm-select-demo" style="width: 500px;"/>
+                <div>xm-select-单选+搜索</div>
+                <div id="demo3" class="xm-select-demo" style="width: 500px;"/>
+            </div>
+            <div class="col-md-12">
+                <div id="editor—wrapper" style="border: 1px solid #ccc; z-index: 100;">
+                    <div id="toolbar-container" style="border-bottom: 1px solid #ccc;"><!-- 工具栏 --></div>
+                    <div id="editor-container" style="height: 200px;"><!-- 编辑器 --></div>
+                </div>
+            </div>
+        </form>
+    </t>
+</templates>

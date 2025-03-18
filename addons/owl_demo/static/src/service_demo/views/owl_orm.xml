@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates>
+    <t t-name="Owl.OrmService" owl="1">
+        <div class="row">
+            <div class="col m-4">
+                <p>Orm Service Demo</p>
+                <button type="button" class="btn btn-info" t-on-click="getOrmService">ORM Button</button>
+            </div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4">
+            <t t-if="state.partners" t-foreach="state.partners" t-as="data" t-key="data.id">
+<!--            <t t-if="state.partners" t-foreach="state.partners.data" t-as="data" t-key="data.id">-->
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <img t-att-src="`data:image/png;base64,${data.image_128}`" class="card-img-top" t-att-alt="data.name" />
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <span t-esc="data.nane"/>
+                            </h5>
+                            <p class="card-text">
+                                <span t-esc="data.phone" />
+                            </p>
+                            <p class="card-text">
+                                <span t-esc="data.website" />
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </div>
+    </t>
+</templates>

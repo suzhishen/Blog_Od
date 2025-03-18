@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_blogs,access_blogs,model_blogs,,1,1,1,1
+access_blogs_menu,access_blogs_menu,model_blogs_menu,,1,1,1,1
+access_blogs_menu_stage,access_blogs_menu_stage,model_blogs_menu_stage,,1,1,1,1
+access_blogs_journal,access_blogs_journal,model_blogs_journal,,1,1,1,1
+access_blogs_encouragement,access_blogs_encouragement,model_blogs_encouragement,,1,1,1,1

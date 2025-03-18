@@ -1,0 +1,13 @@
+<templates>
+    <t t-name="owl_demo.OwlDemoListView" t-inherit="web.ListRenderer" t-inherit-mode="primary" owl="1">
+        <xpath expr="//div[hasclass('o_list_renderer')]" position="before">
+            <script type="text/javascript" src="/owl_demo/static/src/layui/layui.js"/>
+            <script type="text/javascript" src="/owl_demo/static/src/js/xm-select.js"/>
+            <OwlDemoDashBoard/>
+            <p>hello</p>
+            <CheckBox value="boolean" disabled="boolean" t-on-change="onValueChange">
+                Some Text
+            </CheckBox>
+        </xpath>
+    </t>
+</templates>

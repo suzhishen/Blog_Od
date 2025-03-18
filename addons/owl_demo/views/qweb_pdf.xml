@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="test_owl_demo_view_form_print_report" model="ir.ui.view">
+            <field name="name">test_owl_demo_view_form_print_report</field>
+            <field name="model">owl.demo</field>
+            <field name="inherit_id" ref="owl_demo.owl_demo_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header" position="after">
+                    <button name="print_action_owl_demo_view_form_report" type="object"
+                            string="测试qweb报表打印" icon="fa-print"/>
+                </xpath>
+            </field>
+        </record>
+
+<!--        <record id="fast_print_report_paperformat_euro" model="report.paperformat">-->
+<!--            <field name="name">采购订单 A4</field>-->
+<!--            <field name="default" eval="True"/>-->
+<!--            <field name="format">A4</field>-->
+<!--            <field name="page_height">0</field>-->
+<!--            <field name="page_width">0</field>-->
+<!--            <field name="orientation">Portrait</field>-->
+<!--            <field name="margin_top">12</field>-->
+<!--            <field name="margin_bottom">12</field>-->
+<!--            <field name="margin_left">5</field>-->
+<!--            <field name="margin_right">5</field>-->
+<!--            <field name="header_line" eval="False"/>-->
+<!--            <field name="header_spacing">35</field>-->
+<!--            <field name="dpi">90</field>-->
+<!--        </record>-->
+
+        <record id="fast_print_report_paperformat_euro" model="report.paperformat">
+            <field name="name">采购订单 A4</field>
+            <field name="default" eval="True"/>
+            <!--format 打印的类型有很多种，这里使用自定义打印custom-->
+            <field name="format">custom</field>
+            <field name="page_height">80</field>
+            <field name="page_width">40</field>
+            <!--Landscape为横向打印-->
+            <field name="orientation">Portrait</field>
+            <!--内容的外边距，就是内容距离顶部的距离，如果有表头这个高度需要大于表头的高度。-->
+            <field name="margin_top">2</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">0</field>
+            <field name="margin_right">0</field>
+            <!--有表头记得设置为True并设置header_spacing，不然打印内容会在表头下方显示不出来-->
+            <field name="disable_shrinking" eval="False"/>
+            <field name="dpi">96</field>
+        </record>
+
+        <!--print_report_name="object.name1" 打印的名称，这里是object.name1，即打印当前记录的name1字段-->
+        <report
+                id="action_report_report_purchase_order_detail_origin"
+                string="测试qweb-pdf打印"
+                model="owl.demo"
+                report_type="qweb-pdf"
+                file="owl_demo.report_owl_demo_qweb_pdf_test"
+                name="owl_demo.report_owl_demo_qweb_pdf_test"
+                print_report_name="object.name1"
+                paperformat="owl_demo.fast_print_report_paperformat_euro"
+                menu="False"
+        />
+
+
+        <template id="report_owl_demo_qweb_pdf_test">
+            <t t-call="web.html_container">
+                <t t-foreach="all_data" t-as="doc">
+                    <t t-call="owl_demo.report_owl_demo_qweb_pdf_template"/>
+                </t>
+            </t>
+        </template>
+
+
+        <template id="report_owl_demo_qweb_pdf_template">
+            <t t-call="owl_demo.report_owl_demo_qweb_pdf_page_template">
+                <div>
+                    打印111
+                </div>
+            </t>
+        </template>
+
+
+        <template id="report_owl_demo_qweb_pdf_page_template">
+            <t t-call="web.html_container">
+                <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
+                     t-att-data-oe-lang="o and o.env.context.get('lang')">
+                    <t t-raw="0"/>
+                </div>
+                <div t-attf-class="footer o_standard_footer">
+                    <div class="text-center" style="text-align: center;">
+                        <div t-if="report_type == 'pdf'" class="text-muted"
+                             style="text-align: center;color:#615a22 !important;">
+                            页数：第<span class="page"/>页，共<span class="topage"/>页
+                        </div>
+                    </div>
+                </div>
+            </t>
+        </template>
+    </data>
+</odoo>
