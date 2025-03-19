@@ -47,15 +47,17 @@
             <field name="binding_model_id"
                    ref="owl_demo.model_owl_demo"/> <!-- (主模块的文件名)模块名称 + csv里的模型id (model_id)   用于指定打印模板位置放置于那个模块里，如果不写，不显示 -->
             <field name="binding_type">report</field><!--  固定写法  -->
-            <field name="paperformat_id" ref="owl_demo.test_owl_demo_qweb_pdf_print"/>
+            <field name="paperformat_id" ref="owl_demo.test_owl_demo_qweb_pdf_print"/>        <!-- 选择打印格式，纸张格式 -->
         </record>
 
         <template id="report_qweb_pdf_template">
             <!-- 调用了 Odoo 中内置的名为 web.html_container 的布局模板-->
             <t t-call="web.html_container">
-                <div stye="font-family: Microsoft YaHei;">
-                    这是一个qweb-pdf模板
-                </div>
+                <t t-call="web.html_container">     <!-- 嵌套两层 web.html_container后， 打印正常，不乱码 -->
+                    <div>
+                        123qwq  这是一个qweb-pdf模板
+                    </div>
+                </t>
             </t>
         </template>
     </data>

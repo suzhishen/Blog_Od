@@ -20,5 +20,6 @@ class OwlDemoExtend(models.Model):
 
     # 测试打印报告
     def print_action_owl_demo_view_form_report(self):
+        print("测试qweb报表打印")
         return self.env.ref('owl_demo.action_report_report_purchase_order_detail_origin').report_action(self, config=False)
 

@@ -61,27 +61,46 @@
                 menu="False"
         />
 
+        <!-- 打印乱码 -->
+        <!-- <template id="report_owl_demo_qweb_pdf_test">
+            <t t-call="web.html_container">
+                <div>
+                    111test  打印测试
+                </div>
+            </t>
+        </template> -->
 
+        <!-- 嵌套两层 web.html_container后， 打印正常，不乱码 -->
+        <!-- <template id="report_owl_demo_qweb_pdf_test">
+            <t t-call="web.html_container">
+                <t t-call="web.html_container"> 
+                    <div>
+                        111test  打印测试
+                    </div>
+                </t>
+            </t>
+        </template> -->
         <template id="report_owl_demo_qweb_pdf_test">
             <t t-call="web.html_container">
-                <t t-foreach="all_data" t-as="doc">
-                    <t t-call="owl_demo.report_owl_demo_qweb_pdf_template"/>
-                </t>
+                <t t-call="owl_demo.report_owl_demo_qweb_pdf_template"/>         <!-- 调用模板，可以多层模板调用嵌套 -->
             </t>
         </template>
 
 
         <template id="report_owl_demo_qweb_pdf_template">
-            <t t-call="owl_demo.report_owl_demo_qweb_pdf_page_template">
+            <t t-call="owl_demo.report_owl_demo_qweb_pdf_page_template">         <!-- 调用模板，可以多层模板调用嵌套 -->
                 <div>
-                    打印111
+                    222test 测试
                 </div>
             </t>
         </template>
-
+        
 
         <template id="report_owl_demo_qweb_pdf_page_template">
             <t t-call="web.html_container">
+                <!-- <div>
+                    333test 测试
+                </div> -->
                 <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
                      t-att-data-oe-lang="o and o.env.context.get('lang')">
                     <t t-raw="0"/>
